@@ -3,6 +3,8 @@ from ayon_server.settings import (
     SettingsField,
 )
 
+from ayon_server.settings.enum import secrets_enum
+
 
 class DiversionSettings(BaseSettingsModel):
     """Nuke addon settings."""
@@ -10,6 +12,12 @@ class DiversionSettings(BaseSettingsModel):
     enabled: bool = SettingsField(
         default=False,
         title="Enabled",
+    )
+
+    api_key: str = SettingsField(
+        default="",
+        enum_resolver=secrets_enum,
+        title="API Key",
     )
 
 
