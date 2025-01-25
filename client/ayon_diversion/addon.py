@@ -20,3 +20,8 @@ class DiversionAddon(AYONAddon, IPluginPaths):
     def get_create_plugin_paths(self, host_name):
         create_path = (DIVERSION_ROOT_DIR / "plugins" / "create").as_posix()
         return [create_path]
+
+    def get_publish_plugin_paths(self, host_name):
+        self.log.debug(f"{host_name = }")
+        publish_path = (DIVERSION_ROOT_DIR / "plugins" / "publish").as_posix()
+        return [publish_path]
