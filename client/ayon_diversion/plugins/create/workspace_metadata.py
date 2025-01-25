@@ -5,12 +5,12 @@ from ayon_unreal.api.plugin import UnrealBaseAutoCreator
 from ayon_unreal.api.pipeline import create_publish_instance, imprint
 
 
-class UnrealDiversionWorkspaceCommit(UnrealBaseAutoCreator):
-    """Auto creator for the current commit of the diversion workspace."""
+class UnrealCreateDiversionWorkspace(UnrealBaseAutoCreator):
+    """Auto creator for the current diversion workspace."""
 
-    identifier = "io.ayon.creators.dv_commit"
-    product_type = "dv_commit"
-    label = "Publish Diversion Workspace Commit"
+    identifier = "io.ayon.creators.dv_workspace"
+    product_type = "dv_workspace"
+    label = "Diversion Workspace"
 
     default_variant = "Main"  # do i need variants?
 
