@@ -21,6 +21,8 @@ class ValidateDiversionWorkspace(pyblish.api.InstancePlugin):
             self.log.error(ws.uncommitted_changes)
             raise PublishValidationError("Workspace has uncommitted changes")
 
+        self.log.info(ws.status)
+
     @classmethod
     def repair(cls, instance):
         UncommittedChangesRepairer(
