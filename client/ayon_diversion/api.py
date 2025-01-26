@@ -67,7 +67,7 @@ class DV_Workspace:
         _check_str = "Your workspace has no changes."
         if _check_str in self._status_lines[:6]:
             return False
-        return False
+        return True
 
     @property
     def uncommitted_changes(self):
