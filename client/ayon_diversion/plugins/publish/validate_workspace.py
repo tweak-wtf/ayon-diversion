@@ -18,8 +18,6 @@ class ValidateDiversionWorkspace(pyblish.api.InstancePlugin):
     def process(self, instance):
         ws: DV_Workspace = instance.data.get("diversion_workspace")
         if ws.has_uncommitted_changes:
-            # TODO: repair action
-            self.log.debug(ws.status)
             self.log.error(ws.uncommitted_changes)
             raise PublishValidationError("Workspace has uncommitted changes")
 
