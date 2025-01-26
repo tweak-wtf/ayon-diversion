@@ -99,10 +99,16 @@ class DV_Workspace:
 
         return result
 
-    def _traverse_changes(self, changes):
-        result = []
-        for change in changes:
-            if not change.startswith("\t"):
-                break
-            result.append(change.split("\t")[-1].strip())
+    def commit_changes(self, msg: str):
+        result = subprocess.check_output(
+            ["dv", "commit", "-a", "-m", msg],
+            cwd=self.path,
+        )
+        return result
+
+    def reset_changes(self):
+        result = subprocess.check_output(
+            ["dv", "reset", "-all"],
+            cwd=self.path,
+        )
         return result
