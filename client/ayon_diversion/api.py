@@ -71,6 +71,14 @@ class DV_Workspace:
 
     @property
     def uncommitted_changes(self):
+        def _traverse_changes(changes):
+            result = []
+            for change in changes:
+                if not change.startswith("\t"):
+                    break
+                result.append(change.split("\t")[-1].strip())
+            return result
+
         if not self.has_uncommitted_changes:
             return []
 
@@ -83,11 +91,11 @@ class DV_Workspace:
         _changes = self._status_lines[5:]
         for idx, change in enumerate(_changes):
             if change.startswith("New:"):
-                result["added"].extend(self._traverse_changes(_changes[idx + 1 :]))
+                result["added"].extend(_traverse_changes(_changes[idx + 1 :]))
             if change.startswith("Modified:"):
-                result["modified"].extend(self._traverse_changes(_changes[idx + 1 :]))
+                result["modified"].extend(_traverse_changes(_changes[idx + 1 :]))
             if change.startswith("Deleted:"):
-                result["deleted"].extend(self._traverse_changes(_changes[idx + 1 :]))
+                result["deleted"].extend(_traverse_changes(_changes[idx + 1 :]))
 
         return result
 
