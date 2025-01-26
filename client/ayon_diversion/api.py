@@ -7,6 +7,7 @@ class DV_Workspace:
     def __init__(self, path: Union[str, Path]):
         if not isinstance(path, Path):
             self.path = Path(path)
+        self.path = path
 
         _workspace_check = subprocess.check_output(
             ["dv", "workspace"],
