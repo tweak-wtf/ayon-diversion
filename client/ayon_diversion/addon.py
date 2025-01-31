@@ -25,3 +25,7 @@ class DiversionAddon(AYONAddon, IPluginPaths):
         self.log.debug(f"{host_name = }")
         publish_path = (DIVERSION_ROOT_DIR / "plugins" / "publish").as_posix()
         return [publish_path]
+
+    def get_launch_hook_paths(self, host_name):
+        hooks_path = (DIVERSION_ROOT_DIR / "hooks").as_posix()
+        return [hooks_path]
